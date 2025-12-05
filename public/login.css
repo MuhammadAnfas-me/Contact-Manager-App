@@ -1,0 +1,115 @@
+/* Background (same as main app) */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #d7f3e3, #b7e4d3);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #2f4f4f;
+}
+
+.logout-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #b0c4d4;
+  color: #344454;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.logout-btn:hover {
+  background: #9db5c7;
+}
+
+/* Login card */
+.login-container {
+  width: 360px;
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 18px;
+  backdrop-filter: blur(14px);
+  padding: 35px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  align-items: center;
+}
+
+/* Text */
+.title {
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #445;
+  margin-bottom: 25px;
+}
+
+/* Inputs */
+input {
+  width: 95%;
+  padding: 12px;
+  margin: 8px 0 15px 0;
+  border-radius: 10px;
+  border: 1px solid #d0e6dd;
+  outline: none;
+  font-size: 15px;
+  background: #f8fffc;
+  color: #333;
+}
+
+input:focus {
+  border-color: #8fcbb0;
+  background: #ffffff;
+}
+
+/* Button */
+.btn {
+  width: 85%;
+  background: #a7d7c5;
+  color: #2f4f4f;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-top: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: #9ccfba;
+}
+
+/* Forgot link */
+.forgot {
+  display: block;
+  margin-top: 15px;
+  color: #2f4f4f;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.forgot:hover {
+  text-decoration: underline;
+}
+
+.signup {
+  display: block;
+  margin-top: 15px;
+  color: #2f4f4f;
+  text-decoration: none;
+  font-size: 17px;
+}
