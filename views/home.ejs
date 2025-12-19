@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home • Contact Manager</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="home.css" />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <div class="navbar">
+      <div class="logo">📇 Contact Manager</div>
+      <button onclick="logoutBtn()" class="logout-btn">Logout</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+      <h2>Welcome!</h2>
+      <p>Manage your contacts easily. Add, edit, or delete contacts anytime.</p>
+
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <form action="/" method="get">
+          <input type="text" name="search" placeholder="Search contacts..." value="<%= search %>" />
+        </form>
+      </div>
+      <button onclick="adduser()" class="btn-add">+ Add New Contact</button>
+
+      <!-- Example Contact Card -->
+      
+      <% users.forEach(element => { %>
+          <div class="contact-card">
+        <div class="contact-info">
+          <strong><%= element.name %></strong><br />
+          <%= element.email %><br />
+          +91 <%= element.phoneNumber %>
+        </div>
+        <div class="actions">
+          <button onclick="editBtn(`<%= element.name %>`)" class="edit-btn">Edit</button>
+          <button onclick="deleteBtn(`<%= element.name %>`)" class="delete-btn">Delete</button>
+        </div>
+      </div>
+      <% }); %>
+
+      <!-- Add more contacts similarly -->
+    </div>
+    <script>
+      function logoutBtn() {
+        window.location.href = '/logout'
+      }
+      function adduser(){
+        window.location.href = "/add-user"
+      }
+      function editBtn(id){
+        window.location.href = `/edit/${id}`
+      }
+      function deleteBtn(id){
+        window.location.href = `/delete/${id}`
+      }
+    </script>
+  </body>
+</html>

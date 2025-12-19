@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="signup.css" />
+  </head>
+
+  <body>
+    <div class="signup-container">
+      <h2>Create an Account</h2>
+      <% if(error){ %>
+      <small style="color: red; font-weight: 600"><%= error %></small>
+      <% } %>
+      <form action="/signup" id="myForm" method="post" novalidate>
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input
+            type="text"
+            id="name"
+            name="username"
+            placeholder="Enter your full name"
+          />
+          <small id="nameError" style="color: red"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter email"
+          />
+          <small id="emailError" style="color: red"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Create Password</label>
+          <input type="password" id="password" placeholder="Create password" />
+          <small id="passwordError" style="color: red"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="cpassword">Confirm Password</label>
+          <input
+            type="password"
+            id="cpassword"
+            name="password"
+            placeholder="Confirm password"
+          />
+          <small id="cpasswordError" style="color: red"></small>
+        </div>
+
+        <button type="submit">Sign Up</button>
+
+        <p class="footer-text">
+          Already have an account? <a href="/login">Login</a>
+        </p>
+      </form>
+    </div>
+  </body>
+</html>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('myForm').addEventListener('submit', formValidation)
+  })
+
+  function formValidation(e) {
+    e.preventDefault()
+    const username = document.getElementById('name').value.trim()
+    const email = document.getElementById('email').value.trim()
+    const password = document.getElementById('password').value.trim()
+    const cpassword = document.getElementById('cpassword').value.trim()
+
+    const nameError = document.getElementById('nameError')
+    const emailError = document.getElementById('emailError')
+    const passwordError = document.getElementById('passwordError')
+    const cpasswordError = document.getElementById('cpasswordError')
+
+    nameError.textContent = ''
+    emailError.textContent = ''
+    passwordError.textContent = ''
+    cpasswordError.textContent = ''
+
+    let isValid = true
+    if (username === '') {
+      nameError.textContent = 'Enter your username'
+      isvalid = false
+    } else if (username.length < 4) {
+      nameError.textContent = 'Username must be 4 letter'
+      isValid = false
+    }
+
+    if (email === '') {
+      emailError.textContent = 'Enter your email'
+      isValid = false
+    } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+      emailError.textContent = 'Please enter a valid email'
+      isValid = false
+    }
+
+    if (password === '') {
+      passwordError.textContent = 'Enter your password'
+      isValid = false
+    } else if (password.length <= 6) {
+      passwordError.textContent = 'Password must be 6 character'
+      isValid = false
+    }
+
+    if (cpassword == '') {
+      cpasswordError.textContent = 'Re-enter your password'
+      isValid = false
+    } else if (password !== cpassword) {
+      cpasswordError.textContent = 'Password does not match'
+      isValid = false
+    }
+
+    if (isValid) {
+      e.target.submit()
+    }
+  }
+</script>

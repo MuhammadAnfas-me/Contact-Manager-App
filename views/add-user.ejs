@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>edit/Add User</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/signup.css">
+</head>
+
+<body>
+  <div class="signup-container">
+    <h2><%= value ? "Edit Contact" : "Create an Account" %></h2>
+    <% if(error){ %>
+        <small style="color: red; font-weight: 600;"><%= error %></small>
+      <% } %>
+
+         <% if(value){ %>
+           <form action="/edit/<%= value %>" method="post" novalidate>
+        <% }else{ %>
+            <form action="/add-user" method="post" novalidate>
+        <% } %>
+      <div class="form-group">
+        <label for="name">Full Name</label>       
+            <input type="text" id="name" name="username" placeholder="Enter your full name" value="<%= value ? value : '' %>"/>
+        </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter email" />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Phone Number</label>
+        <input type="text" name="phone" id="password" placeholder="Enter your Phone Number" />
+      </div> 
+
+      <button type="submit"><%= value ? "Edit" : "Add" %></button>
+
+      <p class="footer-text">
+      </p>
+    </form>
+
+    
+  </div>
+</body>
+</html>
